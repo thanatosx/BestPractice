@@ -1,0 +1,42 @@
+<resources>
+
+    <style name="App.Widget.ActionBar" parent="@style/Widget.AppCompat.Light.ActionBar">
+        <item name="background">?attr/colorPrimary</item>
+        <item name="titleTextStyle">@style/App.TextAppearance.Widget.ActionBar.Title</item>
+        <item name="contentInsetStart">0dp</item>
+        <item name="contentInsetStartWithNavigation">0dp</item>
+        <item name="contentInsetEnd">0dp</item>
+        <item name="elevation">0dp</item>
+    </style>
+
+    <style name="App.TextAppearance.Widget.ActionBar.Title" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#FFF</item>
+    </style>
+
+    <style name="App.Widget.Toolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="android:minHeight">50dp</item>
+        <item name="titleTextAppearance">@style/App.TextAppearance.Widget.Actionbar.Title</item>
+        <item name="subtitleTextAppearance">@style/App.TextAppearance.Widget.Actionbar.Subtitle</item>
+        <item name="navigationIcon">@mipmap/ic_back</item>
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="contentInsetStart">0dp</item>
+        <item name="contentInsetStartWithNavigation">0dp</item>
+    </style>
+
+    <style name="App.TextAppearance.Widget.Actionbar.Title" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#FFF</item>
+    </style>
+
+    <style name="App.TextAppearance.Widget.Actionbar.Subtitle" parent="TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#FFF</item>
+    </style>
+
+    <style name="App.Widget.ActionButton.Overflow" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:src">@mipmap/ic_more</item>
+    </style>
+
+
+</resources>

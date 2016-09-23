@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="App.Theme" parent="Base.App.Theme">
+
+    </style>
+
+    <style name="App.Theme.Transition.SceneDetail" parent="Base.App.Theme">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowEnterTransition">@transition/transition_window_elements_enter</item>
+        <item name="android:windowExitTransition">@transition/transition_window_elements_exit</item>
+        <item name="android:windowSharedElementEnterTransition">@transition/transition_shared_element_enter</item>
+        <item name="android:windowSharedElementExitTransition">@transition/transition_shared_element_exit</item>
+    </style>
+
+</resources>
