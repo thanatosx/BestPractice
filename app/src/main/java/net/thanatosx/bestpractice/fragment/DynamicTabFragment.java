@@ -10,16 +10,14 @@ import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewPropertyAnimator;
-import android.view.animation.Animation;
-import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import net.thanatosx.bestpractice.R;
+import net.thanatosx.bestpractice.adapter.FragmentPagerAdapter;
 import net.thanatosx.bestpractice.bean.SubTab;
 import net.thanatosx.bestpractice.ui.MainActivity;
 import net.thanatosx.bestpractice.widgets.TabPickerView;
@@ -70,8 +68,8 @@ public class DynamicTabFragment extends BaseFragment {
     }
 
     @Override
-    protected void initWidgets() {
-        super.initWidgets();
+    protected void initWidgets(View view) {
+        super.initWidgets(view);
 
         mViewTabPicker.setTabPickerManager(new TabPickerView.TabPickerDataManager() {
             @Override

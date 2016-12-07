@@ -1,11 +1,8 @@
 package net.thanatosx.bestpractice.fragment;
 
 import android.content.Intent;
-import android.view.Gravity;
-import android.widget.Toast;
 
 import net.thanatosx.bestpractice.R;
-import net.thanatosx.bestpractice.SimplexToast;
 import net.thanatosx.bestpractice.ui.OpenActivity;
 import net.thanatosx.bestpractice.ui.SoftInputActivity;
 

@@ -2,6 +2,7 @@ package net.thanatosx.bestpractice.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -39,8 +40,8 @@ public class EmptyFragment extends BaseFragment {
     }
 
     @Override
-    protected void initWidgets() {
-        super.initWidgets();
+    protected void initWidgets(View view) {
+        super.initWidgets(view);
         Glide.with(this).load(R.mipmap.ic_launcher).into(mViewIcon);
         mViewNumber.setText(String.valueOf(number));
     }

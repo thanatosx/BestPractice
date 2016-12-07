@@ -49,7 +49,7 @@ public class SceneTransitionFragment extends BaseFragment implements SwipeRefres
     }
 
     @Override
-    protected void initWidgets() {
+    protected void initWidgets(View view) {
         mLayoutSwipe.setOnRefreshListener(this);
         mRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
 

@@ -1,10 +1,8 @@
 package net.thanatosx.bestpractice.ui;
 
-import android.view.Gravity;
 import android.widget.Toast;
 
 import net.thanatosx.bestpractice.R;
-import net.thanatosx.bestpractice.SimplexToast;
 
 import butterknife.OnClick;
 

@@ -1,10 +1,11 @@
-package net.thanatosx.bestpractice;
+package net.thanatosx.bestpractice.utils;
 
 import android.content.Context;
 import android.view.Gravity;
 import android.widget.Toast;
 
 /**
+ * 统一Toast的使用，避免频繁吐司
  * Created by thanatosx on 2016/11/15.
  */
 @SuppressWarnings("all")
