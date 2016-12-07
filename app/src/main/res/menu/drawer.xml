@@ -9,5 +9,13 @@
                 android:icon="@mipmap/ic_scene"/>
         </menu>
     </item>
+    <item android:title="网易Tab实现">
+        <menu>
+            <item
+                android:id="@+id/menu_dynamic_tab"
+                android:title="动态Tab"
+                android:icon="@mipmap/ic_scene"/>
+        </menu>
+    </item>
 
 </menu>

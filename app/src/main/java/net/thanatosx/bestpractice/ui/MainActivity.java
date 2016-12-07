@@ -1,5 +1,9 @@
 package net.thanatosx.bestpractice.ui;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,10 +14,24 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
+import android.transition.TransitionManager;
+import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import net.thanatosx.bestpractice.R;
+import net.thanatosx.bestpractice.fragment.DynamicTabFragment;
+import net.thanatosx.bestpractice.fragment.HuaWeiCropFragment;
+import net.thanatosx.bestpractice.fragment.RippleFragment;
 import net.thanatosx.bestpractice.fragment.SceneTransitionFragment;
+import net.thanatosx.bestpractice.fragment.ToastFragment;
+
+import java.nio.IntBuffer;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -27,6 +45,11 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     @Bind(R.id.layout_coordinator) CoordinatorLayout mLayoutCoordinator;
 
     private MenuItem mCurItem;
+    private List<OnTurnBackListener> mTurnBackListeners = new ArrayList<>();
+
+    public interface OnTurnBackListener{
+        boolean onTurnBack();
+    }
 
     @Override
     protected int getContentView() {
@@ -48,8 +71,9 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         toggle.syncState();
 
         mDrawerNavView.setNavigationItemSelectedListener(this);
-        setupFragment(SceneTransitionFragment.class);
+        setupFragment(DynamicTabFragment.class);
         mDrawerNavView.setCheckedItem(R.id.menu_make_scene);
+
     }
 
     private void setupFragment(Class<? extends Fragment> fc) {
@@ -76,6 +100,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             case R.id.menu_make_scene:
                 setupFragment(SceneTransitionFragment.class);
                 break;
+            case R.id.menu_dynamic_tab:
+                setupFragment(DynamicTabFragment.class);
         }
         mDrawerNavView.setCheckedItem(iid);
         mCurItem = item;
@@ -83,4 +109,15 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         return false;
     }
 
+    public void addOnTurnBackListener(OnTurnBackListener l){
+        this.mTurnBackListeners.add(l);
+    }
+
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+        for (OnTurnBackListener l : mTurnBackListeners){
+            l.onTurnBack();
+        }
+    }
 }

@@ -3,6 +3,8 @@ package net.thanatosx.bestpractice.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,6 +26,7 @@ public class SceneDetailActivity extends BaseBackActivity{
     @Bind(R.id.tv_title) TextView mViewTitle;
     @Bind(R.id.tv_content) TextView mViewContent;
     @Bind(R.id.iv_banner) ImageView mViewBanner;
+    @Bind(R.id.layout_appbar) AppBarLayout mLayoutAppBar;
 
     private Article article;
 
@@ -53,5 +56,11 @@ public class SceneDetailActivity extends BaseBackActivity{
         Glide.with(this)
                 .load(article.getBannerLink())
                 .into(mViewBanner);
+    }
+
+    @Override
+    public void onBackPressed() {
+        mToolbar.setVisibility(View.GONE);
+        super.onBackPressed();
     }
 }
