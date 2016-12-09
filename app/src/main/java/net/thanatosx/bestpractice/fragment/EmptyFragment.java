@@ -1,7 +1,11 @@
 package net.thanatosx.bestpractice.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -35,6 +39,7 @@ public class EmptyFragment extends BaseFragment {
 
     @Override
     protected boolean initBundle(Bundle bundle) {
+        if (bundle == null) return true;
         number = bundle.getString(BUNDLE_KEY, "0");
         return super.initBundle(bundle);
     }
@@ -51,4 +56,45 @@ public class EmptyFragment extends BaseFragment {
         return R.layout.fragment_empty;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.i("oschina", "Fragment On Create");
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Log.i("oschina", "Fragment On Create View");
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+//        super.onSaveInstanceState(outState);
+        Log.i("oschina", "Fragment On SaveInstance State");
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Log.i("oschina", "Fragment On Destroy View");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.i("oschina", "Fragment On Destroy");
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Log.i("oschina", "Fragment On Attach");
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        Log.i("oschina", "Fragment On Detach");
+    }
 }

@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
@@ -23,6 +24,7 @@ import android.widget.Toast;
 
 import net.thanatosx.bestpractice.R;
 import net.thanatosx.bestpractice.fragment.DynamicTabFragment;
+import net.thanatosx.bestpractice.fragment.EmptyFragment;
 import net.thanatosx.bestpractice.fragment.HuaWeiCropFragment;
 import net.thanatosx.bestpractice.fragment.RippleFragment;
 import net.thanatosx.bestpractice.fragment.SceneTransitionFragment;
@@ -71,25 +73,53 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         toggle.syncState();
 
         mDrawerNavView.setNavigationItemSelectedListener(this);
-        setupFragment(DynamicTabFragment.class);
+        setupFragment(EmptyFragment.class);
         mDrawerNavView.setCheckedItem(R.id.menu_make_scene);
 
     }
+
+    /*
+     * FragmentTransaction.add(int, Fragment) 这样操作的Fragment会在commit后立刻走生命周期
+     * 显示出来，而FragmentTransaction.show(Fragment)和FragmentTransaction.hide(Fragment)这
+     * 两个方法只是隐藏和显示Fragment.mView而已
+     */
 
     private void setupFragment(Class<? extends Fragment> fc) {
         Fragment fragment = getSupportFragmentManager().findFragmentByTag(fc.getName());
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         if (fragment == null) {
             fragment = Fragment.instantiate(this, fc.getName());
-            ft.add(fragment, fc.getName());
+            ft.add(R.id.frame_container, fragment, fc.getName());
         }
-        ft.replace(R.id.frame_container, fragment);
+//        ft.hide(fragment);
+//        ft.show(fragment);
+//        ft.replace(R.id.frame_container, fragment);
         ft.commit();
     }
 
     @Override
     protected void initData() {
         super.initData();
+        /*new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Fragment fragment = getSupportFragmentManager().findFragmentByTag(EmptyFragment.class.getName());
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.detach(fragment);
+                ft.commit();
+            }
+        }, 3000);*/
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                for (Fragment fragment : getSupportFragmentManager().getFragments()){
+                    ft.remove(fragment);
+                }
+                ft.commit();
+            }
+        }, 6000);
     }
 
     @Override
